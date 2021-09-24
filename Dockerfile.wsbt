@@ -1,0 +1,9 @@
+FROM docone:latest
+
+COPY . /home/app
+
+WORKDIR /home/app
+
+EXPOSE 8001
+
+ENTRYPOINT sbt compile
