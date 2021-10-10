@@ -1,4 +1,4 @@
-import Dependencies.{Version, authModuleDependencies, commonModuleDependencies, authApiModuleDependencies}
+import Dependencies.{Version, authModuleDependencies, commonModuleDependencies, authApiModuleDependencies,postApiModuleDependencies,postModuleDependencies}
 import CommonSettings._
 import scoverage._
 
@@ -13,7 +13,7 @@ def test(deps: ModuleID*): Seq[ModuleID] = deps map (_ % "test")
 resolvers += Resolver.bintrayRepo("dnvriend", "maven")
 
 lazy val root = project.in(file("."))
-  .aggregate(common, auth, authApi)
+  .aggregate(common, auth, authApi,post,postApi)
 
 lazy val common = (
   baseProject("common")
@@ -28,10 +28,23 @@ lazy val auth = (
   ScoverageKeys.coverageMinimum := 80,
   ScoverageKeys.coverageFailOnMinimum := true)
   )
+lazy val post = (
+  baseProject("post")
+    .dependsOn(common,postApi)
+    settings(libraryDependencies ++= postModuleDependencies,
+    assemblyJarName in assembly := "post.jar",
+    ScoverageKeys.coverageMinimum := 80,
+    ScoverageKeys.coverageFailOnMinimum := true)
+  )
 
 lazy val authApi = (
   baseProject("auth-api")
     settings(libraryDependencies ++= authApiModuleDependencies )
+  )
+
+lazy val postApi = (
+  baseProject("post-api")
+    settings(libraryDependencies ++= postApiModuleDependencies )
   )
 
 envFileName in ThisBuild := ".env-service"

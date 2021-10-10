@@ -4,6 +4,6 @@ COPY . /home/app
 
 WORKDIR /home/app
 
-EXPOSE 8001
+EXPOSE 8001,8002
 
 ENTRYPOINT sbt compile

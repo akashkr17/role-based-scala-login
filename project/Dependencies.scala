@@ -95,4 +95,9 @@ object Dependencies {
 
   val authModuleDependencies: Seq[sbt.ModuleID] = akkaDependencies ++ logDependencies ++ dbDependencies ++
     Seq( Libraries.akkaTest,Libraries.scalaTest, Libraries.cors, Libraries.mockito, Libraries.mock ,Libraries.akkaPersistTest)
+
+  val postApiModuleDependencies: Seq[sbt.ModuleID] = Seq(Libraries.liftJson ) ++ Libraries.circe
+  val postModuleDependencies: Seq[sbt.ModuleID] = akkaDependencies ++ logDependencies ++ dbDependencies ++
+    Seq( Libraries.akkaTest,Libraries.scalaTest, Libraries.cors, Libraries.mockito, Libraries.mock ,Libraries.akkaPersistTest)
+
 }

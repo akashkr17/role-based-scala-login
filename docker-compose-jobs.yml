@@ -15,7 +15,25 @@ services:
     networks:
       - auth-api_api
 
+  post-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.wsbt
+    volumes:
+      - .:/home/app
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env-service
+    entrypoint: ["sbt","project post","run"]
+    networks:
+      - post-api_api
+
 networks:
   auth-api_api:
+    # Use a custom driver
+    external: true
+
+  post-api_api:
     # Use a custom driver
     external: true

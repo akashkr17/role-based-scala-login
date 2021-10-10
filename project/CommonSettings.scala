@@ -14,7 +14,7 @@ object CommonSettings {
   scalaVersion := Version.scalaV,
     parallelExecution in Test := false,
     checksums in update := Nil,
-    ScoverageKeys.coverageExcludedFiles := ".*MainAuth.*;.*FlywayService.*;" + ".*FailurePropatingActor.*;",
+    ScoverageKeys.coverageExcludedFiles := ".*MainAuth.*;.*FlywayService.*;" + ".*FailurePropagatingActor.*;",
     test in assembly := {},
     assemblyMergeStrategy in assembly := {
       case PathList("META-INF", xs@_*) =>

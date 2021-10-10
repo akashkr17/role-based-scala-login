@@ -2,7 +2,7 @@ package com.util
 
 object Role extends Enumeration {
   type Section = Value
-  val SUPER = Value("Super")
+  val ADMINISTRATOR = Value("Administrator")
   val ADMIN = Value("Admin")
   val VISITOR = Value("Visitor")
   val USER = Value("User")
